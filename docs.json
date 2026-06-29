@@ -1,13 +1,19 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "name": "Fuel Cashback",
-  "navigation": [
-    {
-      "group": "Documentation",
-      "pages": [
-        "introduction",
-        "fuel-cashback"
-      ]
-    }
-  ]
+  "theme": "mint",
+  "name": "Fuel Cashback Documentation",
+  "colors": {
+    "primary": "#16A34A"
+  },
+  "navigation": {
+    "groups": [
+      {
+        "group": "Documentation",
+        "pages": [
+          "introduction",
+          "fuel-cashback"
+        ]
+      }
+    ]
+  }
 }
