@@ -1,1 +1,213 @@
 
+---
+
+title: Fuel Cashback Offer
+description: Configure a transactional fuel cashback offer.
+-----------------------------------------------------------
+
+# Fuel Cashback Offer
+
+## Overview
+
+This guide explains how to configure a **Fuel Cashback** offer in the Offer Management platform.
+
+### Offer Type
+
+| Field         | Value               |
+| ------------- | ------------------- |
+| Offer Type    | Transactional Offer |
+| Offer Outcome | Cashback            |
+
+This offer rewards customers with **1% cashback** on eligible fuel transactions between **₹500 and ₹5,000**, with a maximum cashback of **₹75 per transaction**.
+
+---
+
+# Basic Details
+
+Navigate to **Offer Creation → Basic Details** and configure the following fields.
+
+| Field                                    | Value                                                                            | Description                                                          |
+| ---------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| Offer Name                               | Fuel Cashback                                                                    | Name displayed for the offer.                                        |
+| Offer Description                        | Get 1% cashback on fuel spends between ₹500 and ₹5,000, max ₹75 per transaction. | Short description of the offer.                                      |
+| Offer Duration                           | 29 Jun 2026 – 29 Jul 2027                                                        | Period during which the offer remains active.                        |
+| Eligibility Level                        | Customer Level                                                                   | Eligibility is evaluated across all eligible accounts of a customer. |
+| Issuer                                   | Test Bank                                                                        | Credit card issuing bank.                                            |
+| Program Type                             | Credit Card                                                                      | Product type for which the offer is applicable.                      |
+| Apply to All Current and Future Programs | Disabled                                                                         | The offer applies only to selected programs.                         |
+| Program                                  | Test Program                                                                     | Credit card program eligible for the offer.                          |
+
+> **Note:** Select **Customer Level** when the offer should be evaluated across all eligible accounts belonging to the same customer. Use **Account Level** only when eligibility must be checked independently for each account.
+
+---
+
+# Set Up Offer User Base
+
+After configuring the basic details, define the customer group that will be eligible for the offer.
+
+## User Base
+
+The **User Base** determines whether the list of eligible customers remains fixed or is updated dynamically throughout the offer duration.
+
+### Configuration
+
+| Field       | Value                                   | Description                                                      |
+| ----------- | --------------------------------------- | ---------------------------------------------------------------- |
+| User Base   | Static Base                             | The eligible customer list is fixed when the offer goes live.    |
+| Eligibility | Configured using eligibility conditions | Defines the customer group eligible for the Fuel Cashback offer. |
+
+> **Selected Configuration:** Static Base
+
+A **Static Base** ensures that only the customers included at the time of offer launch are eligible for the offer. Any customers added after the go-live date will not automatically become eligible.
+
+---
+
+# Set Up Transaction Eligibility
+
+After defining the user base, configure the transaction conditions that determine whether a transaction qualifies for cashback.
+
+## Transaction Eligibility
+
+### Configuration
+
+| Field                   | Value       | Description                                                                                          |
+| ----------------------- | ----------- | ---------------------------------------------------------------------------------------------------- |
+| Transaction Eligibility | Default     | Uses the default transaction eligibility configuration.                                              |
+| MCC                     | Allowed     | Only transactions belonging to the specified Merchant Category Codes (MCCs) are considered eligible. |
+| MCC Condition           | MCC in List | Checks whether the transaction MCC is present in the configured list of allowed MCCs.                |
+
+---
+
+## Date for Offer Processing
+
+Choose when the offer eligibility should be evaluated.
+
+### Configuration
+
+| Field                 | Value            | Description                                                                       |
+| --------------------- | ---------------- | --------------------------------------------------------------------------------- |
+| Offer Processing Date | Transaction Date | The offer is evaluated based on the transaction date instead of the posting date. |
+
+> **Selected Configuration:** Transaction Date
+
+Using the **Transaction Date** ensures that cashback eligibility is determined based on when the customer performs the transaction.
+
+---
+
+# Calculate the Offer Outcome
+
+After configuring the transaction eligibility, define how the cashback amount is calculated for eligible transactions.
+
+## Offer Calculation Rule
+
+The **Offer Calculation Rule** determines the benefit that will be awarded to the customer when an eligible transaction is identified.
+
+### Configuration
+
+| Field                  | Value      | Description                                                                |
+| ---------------------- | ---------- | -------------------------------------------------------------------------- |
+| Offer Calculation Rule | Percentage | Cashback is calculated as a percentage of the eligible transaction amount. |
+| Cashback Percentage    | 1%         | Customers receive 1% cashback on every eligible transaction.               |
+
+> **Selected Configuration:** Percentage Cashback (1%)
+
+---
+
+## Funding Account
+
+The **Funding Account** is the source account used to disburse cashback to eligible customers.
+
+### Configuration
+
+| Field           | Value                | Description                                                  |
+| --------------- | -------------------- | ------------------------------------------------------------ |
+| Funding Account | Test Funding Account | The account from which cashback is credited to the customer. |
+
+> **Selected Configuration:** Test Funding Account
+
+---
+
+# Usage Limit
+
+The **Usage Limit** defines how many times or up to what amount a customer can avail the offer during the configured validity period.
+
+### Configuration
+
+| Field          | Value    | Description                                                   |
+| -------------- | -------- | ------------------------------------------------------------- |
+| Limit Duration | Lifetime | The usage limit is tracked over the lifetime of the offer.    |
+| Limit Type     | Amount   | The usage is limited based on the configured cashback amount. |
+| Limit Value    | ₹1       | The configured lifetime usage limit for this offer.           |
+
+> **Selected Configuration:** Lifetime Amount Limit of ₹1.
+---
+
+# Define When to Post Your Offer
+
+After configuring the offer outcome and usage limits, configure how and when the cashback should be posted to the customer's account.
+
+## Enable Posting
+
+Enable **Posting** to allow the platform to credit the cashback to eligible customers. Disabling this option prevents the benefit from being posted, even if all offer conditions are satisfied.
+
+### Posting Eligibility
+
+Posting Eligibility defines the conditions that must be met before the cashback is credited to the customer's account.
+
+#### Configuration
+
+| Field               | Value          | Description                                                                            |
+| ------------------- | -------------- | -------------------------------------------------------------------------------------- |
+| Enable Posting      | Enabled        | Allows cashback to be credited to eligible customers.                                  |
+| Posting Eligibility | Account Status | Cashback is posted only if the account satisfies the configured eligibility condition. |
+| Account Status      | ACTIVE         | Only customers with active accounts are eligible to receive cashback.                  |
+
+---
+
+## Narration
+
+Narrations are recorded in the customer ledger whenever cashback is credited or reversed.
+
+### Configuration
+
+| Field              | Value                     | Description                                                     |
+| ------------------ | ------------------------- | --------------------------------------------------------------- |
+| Posting Narration  | 1% Fuel Cashback Credited | Displayed in the ledger when cashback is successfully credited. |
+| Reversal Narration | 1% Fuel Cashback Reversed | Displayed in the ledger if the cashback is reversed.            |
+
+---
+
+# Craft the Perfect UI: Home Page
+
+Configure how the offer is displayed to customers in the Progressive Web App (PWA).
+
+## Display Configuration
+
+| Field               | Value                                                                                                   | Description                                                               |
+| ------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| Enable Display      | Enabled                                                                                                 | Displays the offer on the customer's PWA home page.                       |
+| Labels              | Fuel, Cashback                                                                                          | Categorizes the offer for easier discovery.                               |
+| Banner Title        | 1% Cashback on Fuel Spends                                                                              | Title displayed on the offer banner.                                      |
+| Banner Description  | Earn 1% cashback on fuel spends between ₹500 and ₹5,000. Max ₹75 cashback per transaction.              | Short summary displayed on the home page.                                 |
+| Display Title       | Fuel Cashback Offer                                                                                     | Title displayed on the offer card.                                        |
+| Display Description | Get 1% cashback on eligible fuel purchases between ₹500 and ₹5,000, up to ₹75 cashback per transaction. | Description shown on the offer card.                                      |
+| Display Order       | 1                                                                                                       | Determines the priority in which the offer is displayed on the home page. |
+---
+
+# Craft the Perfect UI: Details Page
+
+The **Details Page** provides customers with comprehensive information about the offer, including its benefits and the call-to-action (CTA) to encourage participation.
+
+## Section Details
+
+Configure the content displayed on the offer details page.
+
+### Configuration
+
+| Field          | Value                                                                                                                                                                      | Description                                                                   |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Offer Details  | Get 1% cashback on eligible fuel spends between ₹500 and ₹5,000. Maximum cashback is ₹75 per transaction. Cashback will be credited as per the offer terms and conditions. | Detailed information displayed to customers about the offer and its benefits. |
+| Text on Button | Fuel Up                                                                                                                                                                    | Call-to-action (CTA) button displayed on the offer details page.              |
+
+> **Selected Configuration:** The offer details clearly communicate the cashback eligibility, maximum cashback limit, and applicable terms and conditions. The **"Fuel Up"** CTA button encourages customers to use their credit card for eligible fuel transactions.
+
