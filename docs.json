@@ -1,7 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "name": "Fuel Cashback Documentation",
-  "theme": "mint",
+  "name": "Fuel Cashback",
   "navigation": [
     {
       "group": "Documentation",
